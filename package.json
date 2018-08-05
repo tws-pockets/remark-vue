@@ -1,7 +1,7 @@
 {
-  "name": "remark-react",
-  "description": "Compile Markdown to React with remark",
-  "version": "4.0.3",
+  "name": "remark-vue",
+  "description": "Compile Markdown to Vue with remark",
+  "version": "0.0.0",
   "author": {
     "name": "Titus Wormer",
     "email": "tituswormer@gmail.com"
@@ -13,7 +13,8 @@
     "Juho Vepsalainen <bebraw@gmail.com>",
     "Jason Trill <jason@jasontrill.com>",
     "Tsuyusato Kitsune <make.just.on@gmail.com>",
-    "Jeremy Stucki <jeremy@interactivethings.com>"
+    "Jeremy Stucki <jeremy@interactivethings.com>",
+    "Mehdi Lahlou <mlahlou@protonmail.ch>"
   ],
   "dependencies": {
     "@mapbox/hast-util-table-cell-style": "^0.1.3",
@@ -49,9 +50,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mapbox/remark-react.git"
+    "url": "https://github.com/medfreeman/remark-vue.git"
   },
-  "bugs": "https://github.com/mapbox/remark-react/issues",
+  "bugs": "https://github.com/medfreeman/remark-vue/issues",
   "scripts": {
     "sub-install": "cd test/react/v0.14 && npm install && cd ../..",
     "changelog": "standard-changelog -i history.md --overwrite",

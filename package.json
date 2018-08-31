@@ -45,7 +45,8 @@
     "html",
     "markdown",
     "remark",
-    "stringify"
+    "stringify",
+    "vue"
   ],
   "license": "MIT",
   "repository": {
@@ -54,12 +55,12 @@
   },
   "bugs": "https://github.com/medfreeman/remark-vue/issues",
   "scripts": {
-    "sub-install": "cd test/react/v0.14 && npm install && cd ../..",
+    "sub-install": "cd test/vue/v2.5 && yarn install && cd ../..",
     "changelog": "standard-changelog -i history.md --overwrite",
     "lint": "xo",
     "test-api": "mocha --check-leaks test/index.js",
     "test-coverage": "nyc --reporter lcov mocha test/index.js",
-    "test": "npm run lint && npm run sub-install && npm run test-coverage"
+    "test": "yarn sub-install && yarn test-coverage"
   },
   "nyc": {
     "check-coverage": true,

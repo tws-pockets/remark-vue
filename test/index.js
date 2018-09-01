@@ -224,10 +224,8 @@ function isHidden(filePath) {
      * Assert fixtures.
      */
 
-    /*
     describe("Fixtures", function() {
       fixtures.forEach(describeFixture);
     });
-    */
   });
 });

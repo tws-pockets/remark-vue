@@ -48,8 +48,6 @@ Percentage: \%
 
 Ampersand: \&
 
-Single quote: \'
-
 Comma: \,
 
 Forward slash: \/
@@ -71,5 +69,5 @@ Caret: \^
 New line: \
 only works in paragraphs.
 
-Two spaces:  
+Two spaces:
 only works in paragraphs.

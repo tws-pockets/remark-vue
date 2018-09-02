@@ -131,7 +131,6 @@ function isHidden(filePath) {
       });
       */
 
-      /*
       it("should use custom components", async function() {
         var markdown = "# Foo";
 
@@ -139,20 +138,18 @@ function isHidden(filePath) {
           .use(vueRenderer, {
             Vue: Vue,
             remarkVueComponents: {
-              h1: {
-                render: function(c) {
-                  return c("h2", props);
-                }
-              }
+              h1: "h2"
             }
           })
           .processSync(markdown).contents;
 
         var html = await Vue.renderToString(vdom);
 
-        assert.equal(html, "<div><h2>Foo</h2></div>");
+        assert.equal(
+          html,
+          '<div data-server-rendered="true"><h2>Foo</h2></div>'
+        );
       });
-      */
 
       it("does not sanitize input when `sanitize` option is set to false", async function() {
         var markdown = "```empty\n```";

@@ -1,31 +1,31 @@
-# remark-react
+# remark-vue
 
-[![Build Status](https://travis-ci.org/mapbox/remark-react.svg?branch=master)](https://travis-ci.org/mapbox/remark-react)
+[![Build Status](https://travis-ci.org/medfreeman/remark-vue.svg?branch=master)](https://travis-ci.org/medfreeman/remark-vue)
 
-**remark-react** compiles markdown to React.  Built on [**remark**](https://github.com/wooorm/remark),
+**remark-vue** compiles markdown to Vue.  Built on [**remark**](https://github.com/remarkjs/remark),
 an extensively tested and pluggable parser.
 
-**Why?** Using innerHTML and [dangerouslySetInnerHTML](https://facebook.github.io/react/tips/dangerously-set-inner-html.html) in
-[React.js](http://facebook.github.io/react/) is a common cause of [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting)
+**Why?** Using `domPropsInnerHTML` in
+[Vue.js](https://vuejs.org/) is a common cause of [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting)
 attacks: user input can include script tags and other kinds of active
-content that reaches across domains and harms security. remark-react
-builds a DOM in React, using [React.createElement](https://facebook.github.io/react/docs/top-level-api.html):
+content that reaches across domains and harms security. remark-vue
+builds a DOM in Vue, using [Vue createElement](https://vuejs.org/v2/guide/render-function.html#Nodes-Trees-and-the-Virtual-DOM):
 this means that you can display parsed & formatted Markdown content
-in an application without using `dangerouslySetInnerHTML`.
+in an application without using `domPropsInnerHTML`.
 
 ## Installation
 
 [npm](https://docs.npmjs.com/cli/install):
 
 ```bash
-npm install remark-react
+npm install remark-vue
 ```
 
 ## Table of Contents
 
 *   [Programmatic](#programmatic)
 
-    *   [remark.use(react, options)](#remarkusereact-options)
+    *   [remark.use(vue, options)](#remarkusevue-options)
 
 *   [Configuration](#configuration)
 
@@ -35,40 +35,41 @@ npm install remark-react
 
 ## Programmatic
 
-### [remark](https://github.com/wooorm/remark#api).[use](https://github.com/wooorm/remark#remarkuseplugin-options)(react, [options](#configuration))
+### [remark](https://github.com/wooorm/remark#api).[use](https://github.com/wooorm/remark#remarkuseplugin-options)(vue, [options](#configuration))
 
 **Parameters**
 
-*   `react` — This plugin;
+*   `vue` — This plugin;
 *   `options` (`Object?`) — See [below](#configuration).
 
 Let’s say `example.js` looks as follows:
 
 ```js
-var React = require('react'),
+var Vue = require('vue'),
     remark = require('remark'),
-    reactRenderer = require('remark-react');
+    vueRenderer = require('remark-vue');
 
-var App = React.createClass({
-    getInitialState() {
-        return { text: '# hello world' };
-    },
-    onChange(e) {
-        this.setState({ text: e.target.value });
-    },
-    render() {
-        return (<div>
-            <textarea
-                value={this.state.text}
-                onChange={this.onChange} />
-            <div id='preview'>
-                {remark().use(reactRenderer).processSync(this.state.text).contents}
-            </div>
-        </div>);
+var App = new Vue({
+  el: '#app',
+  data: function () {
+    return {
+      text: '# hello world'
     }
+  },
+  onChange(e) {
+    this.text = e.target.value;
+  },
+  render() {
+    return (<div>
+      <textarea
+        value={this.text}
+        v-on:change={this.onChange} />
+      <div id='preview'>
+        { remark().use(vueRenderer).processSync(this.text).contents }
+      </div>
+    </div>);
+  }
 });
-
-React.render(<App />, document.getElementById('app'));
 ```
 
 ## Configuration
@@ -87,20 +88,20 @@ All options, including the `options` object itself, are optional:
 
     If `false` is passed, it does not sanitize input.
 
-*   `prefix` (`string`, default: `h-`)
-    — React key.
+*   `prefix` (`string`, default: `''`)
+    — Vue key.
 
-*   `createElement` (`Function`, default: `require('react').createElement`)
-    — Function to use to create elements.
+*   `Vue` (`Function`, default: `require('vue')`)
+    — Global Vue constructor.
 
-*   `remarkReactComponents` (`object`, default: `undefined`)
+*   `remarkVueComponents` (`object`, default: `undefined`)
     — Provides a way to override default elements (`<a>`, `<p>`, etc)
     by defining an object comprised of `element: Component` key-value
     pairs. For example, to output `<MyLink>` components instead of
     `<a>`, and `<MyParagraph>` instead of `<p>`:
 
     ```js
-    remarkReactComponents: {
+    remarkVueComponents: {
       a: MyLink,
       p: MyParagraph
     }
@@ -115,7 +116,7 @@ These can passed to `remark.use()` as a second argument.
 
 ## Integrations
 
-**remark-react** works great with:
+**remark-vue** works great with:
 
 *   [**remark-toc**](https://github.com/wooorm/remark-toc), which generates
     tables of contents;
@@ -126,13 +127,14 @@ These can passed to `remark.use()` as a second argument.
 *   ...and [more](https://github.com/wooorm/remark/blob/master/doc/plugins.md#list-of-plugins).
 
 All [**remark** nodes](https://github.com/wooorm/mdast)
-can be compiled to HTML.  In addition, **remark-react** looks for an
+can be compiled to HTML.
+
+In addition, **remark-vue** looks for an
 `attributes` object on each node it compiles and adds the found properties
 as HTML attributes on the compiled tag.
 
-Additionally, syntax highlighting can be included (completely virtual) with
-[`remark-react-lowlight`](https://github.com/bebraw/remark-react-lowlight).
-
 ## License
 
-[MIT](LICENSE) © [Titus Wormer](http://wooorm.com), modified by [Tom MacWright](http://www.macwright.org/) and [Mapbox](https://www.mapbox.com/)
+[MIT](LICENSE) © [Titus Wormer](http://wooorm.com), modified by [Tom MacWright](http://www.macwright.org/), [Mapbox](https://www.mapbox.com/).
+
+Forked by [Med_freeman](https://medfreeman.io) to `remark-vue`.

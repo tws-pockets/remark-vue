@@ -28,8 +28,8 @@ var TABLE_ELEMENTS = ["table", "thead", "tbody", "tfoot", "tr"];
  *   - Components.
  * @param {string?} [options.prefix]
  *   - Key prefix.
- * @param {Function?} [options.createElement]
- *   - `h()`.
+ * @param {Function?} [options.Vue]
+ *   - Vue constructor.
  */
 function remarkVue(options) {
   var settings = options || {};

@@ -1,6 +1,6 @@
 # remark-vue
 
-[![Build Status](https://travis-ci.org/medfreeman/remark-vue.svg?branch=master)](https://travis-ci.org/medfreeman/remark-vue)
+![circleci](https://badgen.net/circleci/github/medfreeman/remark-vue/vuejs)
 
 **remark-vue** compiles markdown to Vue.  Built on [**remark**](https://github.com/remarkjs/remark),
 an extensively tested and pluggable parser.

@@ -147,10 +147,7 @@ function isHidden(filePath) {
 
         var html = await Vue.renderToString(vdom);
 
-        assert.equal(
-          html,
-          '<div data-server-rendered="true"><h2>Foo</h2></div>'
-        );
+        assert.equal(html, '<h2 data-server-rendered="true">Foo</h2>');
       });
 
       it("does not sanitize input when `sanitize` option is set to false", async function() {
@@ -167,7 +164,7 @@ function isHidden(filePath) {
 
         assert.equal(
           html,
-          '<div data-server-rendered="true"><pre><code class="language-empty"></code></pre></div>'
+          '<pre data-server-rendered="true"><code class="language-empty"></code></pre>'
         );
       });
 
@@ -183,10 +180,7 @@ function isHidden(filePath) {
 
         var html = await Vue.renderToString(vdom);
 
-        assert.equal(
-          html,
-          '<div data-server-rendered="true"><h1>Foo</h1></div>'
-        );
+        assert.equal(html, '<h1 data-server-rendered="true">Foo</h1>');
       });
     });
 
@@ -212,10 +206,7 @@ function isHidden(filePath) {
           write(join(filepath, "output.html"), result);
         }
 
-        assertion(
-          result,
-          '<div data-server-rendered="true">' + output + "</div>"
-        );
+        assertion(result, output);
       });
     }
 

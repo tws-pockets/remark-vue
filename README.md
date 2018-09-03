@@ -1,5 +1,7 @@
 # remark-vue
 
+[![npm version](https://badgen.net/npm/v/remark-vue)](https://www.npmjs.com/package/remark-vue)
+[![npm](https://badgen.net/npm/dt/remark-vue)](https://npmjs.com/package/remark-vue)
 [![Build Status](https://badgen.net/circleci/github/medfreeman/remark-vue/vuejs)](https://circleci.com/gh/medfreeman/remark-vue)
 [![Codecov](https://badgen.net/codecov/c/github/medfreeman/remark-vue/vuejs)](https://codecov.io/gh/medfreeman/remark-vue/branch/vuejs)
 [![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/remark-vue.svg)](https://greenkeeper.io/)

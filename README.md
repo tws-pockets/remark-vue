@@ -1,6 +1,8 @@
 # remark-vue
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/remark-vue.svg)](https://greenkeeper.io/) [![Build Status](https://badgen.net/circleci/github/medfreeman/remark-vue/vuejs)](https://circleci.com/gh/medfreeman/remark-vue)
+[![Build Status](https://badgen.net/circleci/github/medfreeman/remark-vue/vuejs)](https://circleci.com/gh/medfreeman/remark-vue)
+[![Codecov](https://badgen.net/codecov/c/github/medfreeman/remark-vue/vuejs)](https://codecov.io/gh/medfreeman/remark-vue/branch/vuejs)
+[![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/remark-vue.svg)](https://greenkeeper.io/)
 [![Dependencies](https://badgen.net/david/dep/medfreeman/remark-vue)](https://david-dm.org/medfreeman/remark-vue)
 [![devDependencies](https://badgen.net/david/dev/medfreeman/remark-vue)](https://david-dm.org/medfreeman/remark-vue?type=dev)
 

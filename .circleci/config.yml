@@ -29,6 +29,11 @@ jobs:
           name: Installing Greenkeeper-lockfile
           command: yarn global add greenkeeper-lockfile@1
 
+      # Install codecov
+      - run:
+          name: Installing codecov
+          command: yarn global add codecov
+
       # Install dependencies
       - run:
           name: Installing Dependencies
@@ -54,6 +59,11 @@ jobs:
       - run:
           name: Uploading lockfile
           command: greenkeeper-lockfile-upload
+
+      # Upload coverage
+      - run:
+          name: Uploading coverage
+          command: codecov
 
       - persist_to_workspace:
           root: /usr/src/app

@@ -145,6 +145,12 @@ In addition, **remark-vue** looks for an
 `attributes` object on each node it compiles and adds the found properties
 as HTML attributes on the compiled tag.
 
+## CONTRIBUTING
+
+* ⇄ Pull requests and ★ Stars are always welcome.
+* For bugs and feature requests, please create an issue.
+* Pull requests must be accompanied by passing automated tests (`$ yarn test`).
+
 ## License
 
 [MIT](LICENSE) © [Titus Wormer](http://wooorm.com), modified by [Tom MacWright](http://www.macwright.org/), [Mapbox](https://www.mapbox.com/).

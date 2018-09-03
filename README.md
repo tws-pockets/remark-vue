@@ -8,6 +8,12 @@
 [![Dependencies](https://badgen.net/david/dep/medfreeman/remark-vue)](https://david-dm.org/medfreeman/remark-vue)
 [![devDependencies](https://badgen.net/david/dev/medfreeman/remark-vue)](https://david-dm.org/medfreeman/remark-vue?type=dev)
 
+> Compile Markdown to Vue with remark
+
+[📖 **Release Notes**](./CHANGELOG.md)
+
+## Features
+
 **remark-vue** compiles markdown to Vue.  Built on [**remark**](https://github.com/remarkjs/remark),
 an extensively tested and pluggable parser.
 

@@ -91,6 +91,9 @@ workflows:
   build:
     jobs:
       - build-job
+          filters:
+            tags:
+              only: /^v.*/
       - deploy-job:
           requires:
             - build-job

@@ -1,7 +1,7 @@
 {
   "name": "remark-vue",
   "description": "Compile Markdown to Vue with remark",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "author": {
     "name": "Mehdi Lahlou",
     "email": "mlahlou@protonmail.ch"

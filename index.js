@@ -92,7 +92,7 @@ function remarkVue(options) {
 
     var vm = new Vue({
       render: function(c) {
-        return c("div", {}, [toH(hFactory(c), hast, settings.prefix)]);
+        return toH(hFactory(c), hast, settings.prefix);
       }
     });
 

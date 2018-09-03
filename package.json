@@ -23,7 +23,6 @@
     "mdast-util-to-hast": "^3.0.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^2.0.0",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "remark": "^9.0.0",
@@ -57,11 +56,11 @@
   "bugs": "https://github.com/medfreeman/remark-vue/issues",
   "scripts": {
     "sub-install": "cd test/vue/v2.5 && yarn install && cd ../..",
-    "changelog": "standard-changelog -i history.md --overwrite",
     "lint": "xo",
     "test-api": "mocha --check-leaks test/index.js",
     "test-coverage": "nyc --reporter lcov mocha test/index.js",
-    "test": "yarn sub-install && yarn test-coverage"
+    "test": "yarn sub-install && yarn test-coverage",
+    "release": "standard-version; git push --follow-tags"
   },
   "nyc": {
     "check-coverage": true,
@@ -95,11 +94,6 @@
     ],
     "settings": {
       "bullet": "*"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

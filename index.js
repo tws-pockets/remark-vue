@@ -1,22 +1,22 @@
 "use strict";
+import  toHAST from "mdast-util-to-hast"
+import  sanitize from "hast-util-sanitize"
+import  toH from "hast-to-hyperscript"
+import  tableCellStyle from "@mapbox/hast-util-table-cell-style"
 
-module.exports = remarkVue;
 
-var toHAST = require("mdast-util-to-hast");
-var sanitize = require("hast-util-sanitize");
-var toH = require("hast-to-hyperscript");
-var tableCellStyle = require("@mapbox/hast-util-table-cell-style");
 
-var globalVue;
-
-try {
-  globalVue = require("vue");
-} catch (err) {}
-
-var own = {}.hasOwnProperty;
 
 var TABLE_ELEMENTS = ["table", "thead", "tbody", "tfoot", "tr"];
+let settings = {
+  sanitize : false,
+  prefix : "",
+  Vue : import('vue'),
+  components : {},
+  vueSettings : {},
+  toHastOptions : {},
 
+}
 /**
  * Attach a vue compiler.
  *
@@ -24,21 +24,26 @@ var TABLE_ELEMENTS = ["table", "thead", "tbody", "tfoot", "tr"];
  * @param {Object?} [options]
  * @param {Object?} [options.sanitize]
  *   - Sanitation schema.
- * @param {Object?} [options.remarkVueComponents]
- *   - Components.
+ * @param {Object?} [options.components]
+ *   - Key Value List of tagnames and components. 
  * @param {string?} [options.prefix]
  *   - Key prefix.
  * @param {Function?} [options.Vue]
  *   - Vue constructor.
+ *  @param {Function?} [options.vueSettings]
+ *   - Settings for vue, gets added on new Vue(...)
+ *  @param {Function?} [options.toHastOptions]
+ *   - Vue constructor.
  */
 function remarkVue(options) {
-  var settings = options || {};
-  var Vue = settings.Vue || globalVue;
+  settings = {
+    ...settings,
+    ...options,
+  }
+  const {Vue, toHastOptions, components} = settings;
   var clean = settings.sanitize !== false;
   var scheme =
     clean && typeof settings.sanitize !== "boolean" ? settings.sanitize : null;
-  var toHastOptions = settings.toHast || {};
-  var components = settings.remarkVueComponents || {};
 
   this.Compiler = compile;
 
@@ -53,8 +58,7 @@ function remarkVue(options) {
    */
   function hFactory(createElement) {
     return function h(name, props, children) {
-      var component = own.call(components, name) ? components[name] : name;
-
+      var component =  components[name] || name;
       /*
        * Currently, a warning is triggered by react for
        * *any* white-space in tables.  So we remove the
@@ -91,6 +95,7 @@ function remarkVue(options) {
     hast = tableCellStyle(hast);
 
     var vm = new Vue({
+      ...settings.vueOptions,
       render: function(c) {
         return toH(hFactory(c), hast, settings.prefix);
       }
@@ -99,3 +104,5 @@ function remarkVue(options) {
     return vm;
   }
 }
+
+export default remarkVue;

@@ -1,6 +1,6 @@
 "use strict";
-import  toHAST from "mdast-util-to-hast"
-import  sanitize from "hast-util-sanitize"
+import  {toHast} from "mdast-util-to-hast"
+import  {sanitize} from "hast-util-sanitize"
 import  toH from "hast-to-hyperscript"
 import  tableCellStyle from "@mapbox/hast-util-table-cell-style"
 
@@ -11,9 +11,8 @@ var TABLE_ELEMENTS = ["table", "thead", "tbody", "tfoot", "tr"];
 let settings = {
   sanitize : false,
   prefix : "",
-  Vue : import('vue'),
   components : {},
-  vueSettings : {},
+  vueSettings : {}, 
   toHastOptions : {},
 
 }
@@ -40,6 +39,7 @@ function remarkVue(options) {
     ...settings,
     ...options,
   }
+  // console.debug("Vue Renderer with ", settings)
   const {Vue, toHastOptions, components} = settings;
   var clean = settings.sanitize !== false;
   var scheme =
@@ -70,7 +70,7 @@ function remarkVue(options) {
           return child !== "\n";
         });
       }
-
+      // console.log('COMP:' , props, components[name],name)
       return createElement(component, props, children);
     };
   }
@@ -82,10 +82,11 @@ function remarkVue(options) {
    * @return {VueElement} - Vue element.
    */
   function compile(node) {
+
     var hast = {
       type: "root",
       properties: {},
-      children: toHAST(node, toHastOptions).children
+      children: toHast(node, toHastOptions).children
     };
 
     if (clean) {
@@ -93,9 +94,9 @@ function remarkVue(options) {
     }
 
     hast = tableCellStyle(hast);
-
+    // console.log(settings.vueSettings)
     var vm = new Vue({
-      ...settings.vueOptions,
+      ...settings.vueSettings,
       render: function(c) {
         return toH(hFactory(c), hast, settings.prefix);
       }
